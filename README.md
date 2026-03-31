@@ -29,3 +29,22 @@ $env:JAVA_HOME='C:\Program Files\Eclipse Adoptium\jdk-21.0.10.7-hotspot'
 - `app.cors.allowed-origins`
 
 Set `app.cors.allowed-origins` to your frontend domain after deployment.
+
+## Render
+
+This API is prepared for Render deployment.
+
+- Repo: `https://github.com/tarak24developer/segrego-api`
+- Runtime: `Java`
+- Build command: `./mvnw clean package -DskipTests`
+- Start command: `java -jar target/segrego-backend-0.0.1-SNAPSHOT.jar`
+
+Required environment variables on Render:
+
+- `SPRING_DATASOURCE_URL`
+- `SPRING_DATASOURCE_USERNAME`
+- `SPRING_DATASOURCE_PASSWORD`
+- `APP_JWT_SECRET`
+- `APP_CORS_ALLOWED_ORIGINS`
+
+For Render, set `APP_CORS_ALLOWED_ORIGINS=https://segrego-frontend.vercel.app`.
