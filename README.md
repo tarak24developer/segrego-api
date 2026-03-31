@@ -32,19 +32,21 @@ Set `app.cors.allowed-origins` to your frontend domain after deployment.
 
 ## Render
 
-This API is prepared for Render deployment.
+This API is prepared for Render deployment with Docker.
 
 - Repo: `https://github.com/tarak24developer/segrego-api`
-- Runtime: `Java`
-- Build command: `./mvnw clean package -DskipTests`
-- Start command: `java -jar target/segrego-backend-0.0.1-SNAPSHOT.jar`
+- Runtime: `Docker`
 
-Required environment variables on Render:
+By default, the app can boot with an in-memory H2 database for initial deployment and testing.
+For persistent production data, replace the datasource environment variables with a managed MySQL database.
+
+Recommended environment variables on Render:
+
+- `APP_JWT_SECRET`
+- `APP_CORS_ALLOWED_ORIGINS=https://segrego-frontend.vercel.app`
+
+Optional persistent database overrides:
 
 - `SPRING_DATASOURCE_URL`
 - `SPRING_DATASOURCE_USERNAME`
 - `SPRING_DATASOURCE_PASSWORD`
-- `APP_JWT_SECRET`
-- `APP_CORS_ALLOWED_ORIGINS`
-
-For Render, set `APP_CORS_ALLOWED_ORIGINS=https://segrego-frontend.vercel.app`.
